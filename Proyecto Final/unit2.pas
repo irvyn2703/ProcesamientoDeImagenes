@@ -14,7 +14,6 @@ type
   TForm2 = class(TForm)
     Button1: TButton;
     Label1: TLabel;
-    Label2: TLabel;
     TrackBar1: TTrackBar;
     procedure Button1Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
@@ -43,13 +42,11 @@ end;
 procedure TForm2.Button1Click(Sender: TObject);
 begin
      r:= TrackBar1.Position;
-     Label2.Caption:= IntToStr(r);
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);
 begin
      r:= TrackBar1.Position;
-     Label2.Caption:= IntToStr(r);
 end;
 
 end.

@@ -1,27 +1,30 @@
 object Form2: TForm2
-  Left = 539
+  Left = 684
   Height = 147
-  Top = 223
+  Top = 220
   Width = 321
-  Caption = 'Form2'
+  Caption = 'Binarización'
   ClientHeight = 147
   ClientWidth = 321
   LCLVersion = '2.2.6.0'
   object TrackBar1: TTrackBar
     Left = 16
-    Height = 40
-    Top = 40
+    Height = 50
+    Top = 48
     Width = 296
     Max = 255
     OnChange = TrackBar1Change
     Position = 122
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
     TabOrder = 0
   end
   object Label1: TLabel
-    Left = 104
-    Height = 15
+    Left = 88
+    Height = 18
     Top = 16
-    Width = 108
+    Width = 138
     Caption = 'Ingresa el valor de R:'
     ParentColor = False
     OnClick = Label1Click
@@ -35,18 +38,5 @@ object Form2: TForm2
     ModalResult = 1
     OnClick = Button1Click
     TabOrder = 1
-  end
-  object Label2: TLabel
-    Left = 144
-    Height = 21
-    Top = 80
-    Width = 27
-    Caption = '122'
-    Font.CharSet = ANSI_CHARSET
-    Font.Height = -16
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    ParentColor = False
-    ParentFont = False
   end
 end
