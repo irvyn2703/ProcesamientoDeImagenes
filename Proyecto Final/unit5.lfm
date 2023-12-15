@@ -1,0 +1,49 @@
+object Form5: TForm5
+  Left = 431
+  Height = 240
+  Top = 136
+  Width = 320
+  Caption = 'Form5'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '2.2.6.0'
+  object Label1: TLabel
+    Left = 144
+    Height = 40
+    Top = 32
+    Width = 22
+    Caption = 'D'
+    Font.Height = -33
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 168
+    Height = 18
+    Top = 48
+    Width = 8
+    Caption = '0'
+    ParentColor = False
+  end
+  object TrackBar1: TTrackBar
+    Left = 40
+    Height = 66
+    Top = 80
+    Width = 260
+    Max = 80
+    Min = 1
+    OnChange = TrackBar1Change
+    Position = 1
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 120
+    Height = 25
+    Top = 168
+    Width = 75
+    Caption = 'Aceptar'
+    ModalResult = 1
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+end

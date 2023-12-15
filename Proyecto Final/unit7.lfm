@@ -1,0 +1,91 @@
+object Form7: TForm7
+  Left = 382
+  Height = 417
+  Top = 139
+  Width = 562
+  Caption = 'Form7'
+  ClientHeight = 417
+  ClientWidth = 562
+  OnCreate = FormCreate
+  LCLVersion = '2.2.6.0'
+  object StringGrid1: TStringGrid
+    Left = 16
+    Height = 366
+    Top = 24
+    Width = 408
+    AutoFillColumns = True
+    ColCount = 3
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 3
+    TabOrder = 0
+    OnSelectCell = StringGrid1SelectCell
+    ColWidths = (
+      135
+      135
+      136
+    )
+  end
+  object Label1: TLabel
+    Left = 456
+    Height = 18
+    Top = 24
+    Width = 65
+    Caption = 'columnas'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 456
+    Height = 25
+    Top = 48
+    Width = 30
+    Caption = '<'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 490
+    Height = 25
+    Top = 48
+    Width = 30
+    Caption = '>'
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object Label2: TLabel
+    Left = 480
+    Height = 18
+    Top = 88
+    Width = 28
+    Caption = 'filas'
+    ParentColor = False
+  end
+  object Button3: TButton
+    Left = 456
+    Height = 25
+    Top = 112
+    Width = 30
+    Caption = '<'
+    OnClick = Button3Click
+    TabOrder = 3
+  end
+  object Button4: TButton
+    Left = 490
+    Height = 25
+    Top = 112
+    Width = 30
+    Caption = '>'
+    OnClick = Button4Click
+    TabOrder = 4
+  end
+  object Button5: TButton
+    Left = 456
+    Height = 25
+    Top = 216
+    Width = 75
+    Caption = 'Aceptar'
+    ModalResult = 1
+    OnClick = Button5Click
+    TabOrder = 5
+  end
+end

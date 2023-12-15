@@ -49,5 +49,6 @@ begin
      r:= TrackBar1.Position;
 end;
 
+
 end.
 

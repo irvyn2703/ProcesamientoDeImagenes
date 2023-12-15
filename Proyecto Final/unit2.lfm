@@ -1,10 +1,10 @@
 object Form2: TForm2
   Left = 684
-  Height = 147
+  Height = 235
   Top = 220
   Width = 321
   Caption = 'Binarización'
-  ClientHeight = 147
+  ClientHeight = 235
   ClientWidth = 321
   LCLVersion = '2.2.6.0'
   object TrackBar1: TTrackBar
@@ -12,9 +12,10 @@ object Form2: TForm2
     Height = 50
     Top = 48
     Width = 296
-    Max = 255
+    Max = 70
+    Min = 8
     OnChange = TrackBar1Change
-    Position = 122
+    Position = 8
     ParentColor = False
     ParentFont = False
     ParentShowHint = False
@@ -31,9 +32,9 @@ object Form2: TForm2
     OnClick = Label1Click
   end
   object Button1: TButton
-    Left = 120
+    Left = 128
     Height = 25
-    Top = 112
+    Top = 176
     Width = 75
     Caption = 'Aceptar'
     ModalResult = 1

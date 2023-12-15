@@ -1,25 +1,27 @@
 object Form1: TForm1
-  Left = 224
-  Height = 550
-  Top = 91
-  Width = 1006
+  Left = 298
+  Height = 545
+  Top = 162
+  Width = 1011
   Caption = 'Proyecto Final'
-  ClientHeight = 524
-  ClientWidth = 1006
+  ClientHeight = 519
+  ClientWidth = 1011
   Menu = MainMenu1
   OnCreate = FormCreate
   LCLVersion = '2.2.6.0'
   object ScrollBox1: TScrollBox
-    Left = 8
+    Left = 16
     Height = 400
-    Top = 8
+    Top = 48
     Width = 400
     HorzScrollBar.Page = 256
     VertScrollBar.Page = 224
     ClientHeight = 398
     ClientWidth = 398
+    Constraints.OnChange = ScrollBox1SizeConstraintsChange
     TabOrder = 0
     OnClick = ScrollBox1Click
+    OnMouseWheelDown = ScrollBox1MouseWheelDown
     object Image1: TImage
       Cursor = crCross
       Left = 0
@@ -28,14 +30,16 @@ object Form1: TForm1
       Width = 256
       AutoSize = True
       Enabled = False
+      OnMouseDown = Image1MouseDown
       OnMouseMove = Image1MouseMove
+      OnMouseUp = Image1MouseUp
     end
   end
   object StatusBar1: TStatusBar
     Left = 0
     Height = 20
-    Top = 504
-    Width = 1006
+    Top = 499
+    Width = 1011
     Panels = <    
       item
         Text = 'X,Y:'
@@ -92,20 +96,10 @@ object Form1: TForm1
       end>
     SimplePanel = False
   end
-  object Button1: TButton
-    Left = 136
-    Height = 25
-    Top = 416
-    Width = 130
-    Caption = 'Regresar cambios'
-    Enabled = False
-    OnClick = Button1Click
-    TabOrder = 2
-  end
   object Chart1: TChart
     Left = 424
     Height = 176
-    Top = 8
+    Top = 48
     Width = 576
     AllowZoom = False
     AxisList = <    
@@ -167,27 +161,27 @@ object Form1: TForm1
   object Button2: TButton
     Left = 424
     Height = 25
-    Top = 192
+    Top = 232
     Width = 100
     Caption = 'Cota Inferior'
     OnClick = Button2Click
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
   end
   object Button3: TButton
     Left = 536
     Height = 25
-    Top = 192
+    Top = 232
     Width = 100
     Caption = 'Cota superior'
     OnClick = Button3Click
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
   end
   object Label1: TLabel
     Left = 744
     Height = 18
-    Top = 199
+    Top = 239
     Width = 8
     Caption = '0'
     ParentColor = False
@@ -196,7 +190,7 @@ object Form1: TForm1
   object Label2: TLabel
     Left = 944
     Height = 18
-    Top = 199
+    Top = 239
     Width = 24
     Caption = '255'
     ParentColor = False
@@ -205,7 +199,7 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 648
     Height = 18
-    Top = 200
+    Top = 240
     Width = 90
     Caption = 'Cota Inferior: '
     ParentColor = False
@@ -214,20 +208,97 @@ object Form1: TForm1
   object Label4: TLabel
     Left = 840
     Height = 18
-    Top = 199
+    Top = 239
     Width = 90
     Caption = 'Cota Superior'
     ParentColor = False
     Visible = False
   end
+  object ToolBar1: TToolBar
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 1011
+    Caption = 'ToolBar1'
+    Images = ImageList1
+    TabOrder = 5
+    object SpeedButton2: TSpeedButton
+      Left = 33
+      Height = 32
+      Top = 2
+      Width = 32
+      AutoSize = True
+      Enabled = False
+      Images = ImageList1
+      ImageIndex = 1
+      OnClick = SpeedButton2Click
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 65
+      Height = 32
+      Top = 2
+      Width = 32
+      AutoSize = True
+      Enabled = False
+      Images = ImageList1
+      ImageIndex = 2
+      OnClick = SpeedButton3Click
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 1
+      Height = 32
+      Top = 2
+      Width = 32
+      AutoSize = True
+      Enabled = False
+      Images = ImageList1
+      ImageIndex = 0
+      OnClick = SpeedButton1Click
+    end
+  end
+  object Image2: TImage
+    Left = 432
+    Height = 90
+    Top = 358
+    Width = 90
+  end
+  object Image3: TImage
+    Left = 576
+    Height = 90
+    Top = 358
+    Width = 90
+  end
+  object Button1: TButton
+    Left = 144
+    Height = 25
+    Top = 464
+    Width = 140
+    Caption = '1.-Cambiar a HSV'
+    OnClick = Button1Click
+    TabOrder = 6
+  end
+  object Label5: TLabel
+    Left = 296
+    Height = 18
+    Top = 471
+    Width = 44
+    Caption = 'Label5'
+    ParentColor = False
+    Visible = False
+  end
   object MainMenu1: TMainMenu
-    Left = 48
-    Top = 416
+    Left = 888
+    Top = 464
     object MenuItem1: TMenuItem
       Caption = 'Archivo'
       object MenuItem4: TMenuItem
         Caption = 'Abrir Imagen'
         OnClick = MenuItem4Click
+      end
+      object MenuItem24: TMenuItem
+        Caption = 'Abrir Imagen (Aritmeticas)'
+        Visible = False
+        OnClick = MenuItem24Click
       end
       object MenuItem9: TMenuItem
         Caption = 'Guardar BMP'
@@ -241,7 +312,7 @@ object Form1: TForm1
         OnClick = MenuItem5Click
       end
       object MenuItem8: TMenuItem
-        Caption = 'Binarización dinámica'
+        Caption = '2.-Binarización dinámica'
         OnClick = MenuItem8Click
       end
       object MenuItem2: TMenuItem
@@ -249,11 +320,11 @@ object Form1: TForm1
         OnClick = MenuItem2Click
       end
       object MenuItem6: TMenuItem
-        Caption = 'Aumento de contraste'
+        Caption = '4.-Aumento de contraste (Tanh)'
         OnClick = MenuItem6Click
       end
       object MenuItem7: TMenuItem
-        Caption = 'Reducción de contraste controlada'
+        Caption = '4.-Reducción de contraste controlada'
         OnClick = MenuItem7Click
       end
     end
@@ -264,44 +335,176 @@ object Form1: TForm1
         OnClick = MenuItem12Click
       end
       object MenuItem10: TMenuItem
-        Caption = 'LBP (Local Binary Patterns) *'
+        Caption = 'LBP (Local Binary Patterns)'
+        OnClick = MenuItem10Click
         object MenuItem13: TMenuItem
-          Caption = 'Máximo *'
+          Caption = '5.-Máximo'
           OnClick = MenuItem13Click
         end
         object MenuItem14: TMenuItem
-          Caption = 'Desviación'
+          Caption = '5.-Desviación'
           OnClick = MenuItem14Click
         end
+      end
+      object MenuItem19: TMenuItem
+        Caption = '5.-LBP asignando colores'
+        Enabled = False
+        OnClick = MenuItem19Click
       end
     end
     object MenuItem15: TMenuItem
       Caption = 'transformaciones geométricas'
       object MenuItem16: TMenuItem
-        Caption = 'Aumentar *'
+        Caption = '6.-Aumentar x2'
         OnClick = MenuItem16Click
       end
       object MenuItem17: TMenuItem
-        Caption = 'Disminuir'
+        Caption = '6.-Disminuir x2'
         OnClick = MenuItem17Click
       end
       object MenuItem18: TMenuItem
-        Caption = 'Reflexión *'
+        Caption = '6.-Reflexión'
         OnClick = MenuItem18Click
       end
+    end
+    object MenuItem20: TMenuItem
+      Caption = '7.-Aritmeticas'
+      OnClick = MenuItem20Click
+    end
+    object MenuItem21: TMenuItem
+      Caption = 'Fourier'
+      object MenuItem22: TMenuItem
+        Caption = '8.-Transformada'
+        OnClick = MenuItem22Click
+      end
+      object MenuItem23: TMenuItem
+        Caption = '9.-Pasa Alta ideal'
+        OnClick = MenuItem23Click
+      end
+    end
+    object MenuItem25: TMenuItem
+      Caption = '10.-Morfológicas'
+      OnClick = MenuItem25Click
     end
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Filter = 'BMPs (*.bmp)|*.bmp'
     InitialDir = 'C:\Users\irvyn\OneDrive\Documents\ProcesamientoDeImagenes\'
-    Left = 16
-    Top = 416
+    Left = 856
+    Top = 464
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = '.bmp'
     Filter = '.bmp'
     InitialDir = '/home/irvyn/Documentos/ProcesamientoDeImagenes/'
-    Left = 80
-    Top = 416
+    Left = 920
+    Top = 464
+  end
+  object ColorDialog1: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 952
+    Top = 464
+  end
+  object ImageList1: TImageList
+    Height = 28
+    Width = 28
+    Left = 824
+    Top = 464
+    Bitmap = {
+      4C7A030000001C0000001C000000EA0800000000000078DAED987B5053571EC7
+      21800482602AA8204FC3FBA11050918824B6A965D58A880F545604EA83559097
+      BC0281885D0503222ADDDD0A8EA8A345DDAAA0ED323E6AC5C7A21671D4AA54D9
+      A9BBEB5A57D9BADB478CF3DD7BAE84C6706F0C68FCA3E399F9CEBD39F7DCDFE7
+      9E737E8F33E15A9AFF10E8ED088D2C07993F3631313135616E39AE4EFCDEB1E4
+      9EF4B18C3525B6B46D732956908F13545F6FEC558097E3136A2C87C546F19E4D
+      8B7BC7EEA5EEA93E39CB580EB1A56D9BB01878C446078BEE31F0EEB18D27B60C
+      E019757E648DA97E35F91672A57E77EBD9BF6C1747BEBA67BC9ADC933E3DFBD7
+      AD635BE31B9C9E35E068B178946C756447894FC9A247FC9E3EDD713C0D93C536
+      6997B5EE79B683794F45E14230A93067591B11DB73F2AE1653D736539FEDC409
+      42A81F5D1990C8BB3DF31C30AFB161234413421110E88BF4D40474DF3D6F34DE
+      81DD9B306AA214197FFD0732AE3D81A8602BA2DF9D842746E24D8E1A8FB4337F
+      435117682DED005C2646E3FAC5E6DE313F7ED76E282FA72786EEF55C897FDB69
+      F3C28481C8BBFEDF5EDEF22B80E7B4049C3FB9977EBEBB6E035C9D1D71F7C649
+      6D9E5D8F2D6DDB743E2471AB918BE31012EF7C6D9E3C2F15E2AC329A957F1B98
+      D3D409819F2F7EB8FF15DABEF804027F37ACA84CC2C40821FEF7AF4B1A1E9FD8
+      D2B64D582CF9E5391EB1113F7B2A5CC74642306536BCFDFD70EEC41EFCB3F314
+      7CFC3DB1FE98123BAF6DC182DC582C4E88A5FCEA19CFC0FCD98747F646F5B003
+      DF7E7D1C1DE70EE2A70797E9FEF3579A213B5481FABF1FC68E6F76D0CCC898F1
+      54CE1AC4CA7BD17AFEF4A01DD2C911589E32AFD71FC935F58378943455D22C8D
+      1A6E6E437D7B3586B9D8B3AEA73E7F217649ACCD4C1421FC6D3FD456C9695E75
+      79012266499E63D1BA7B100D37FE009F5001ABBFE88B876D5BCA30561A8C8633
+      72D4B564C13BC01965C5E9F01EEB873FDEDEDF974769FBB707E01DEAD5EFF81B
+      31DC1E9E411EF8F84225765EADC1CE56196435F33164F85BA8BAB89D91A591F7
+      38FF7EF37876D6A86A51D03E40F4F1B9F5F0F0734251D306BDAC81F2C81E6858
+      0D573723EC9D3148D998F142D600793C2B1BEE531FA100446EBECEB0B0B48017
+      65C71059D958EBAB4703A9B7DAEA57BD7DDDE78937E7C1573B3FEE6B3ECF9BBC
+      69BF8AC6B3B41836D4C66A0CA5E057AC31D6946D6D96C730FEB4DC1951AA2D4B
+      62610CE5C544A946510C0D4F1A2468BCF527399E366F318A886DC2D0F0DE0D12
+      7CDAB57D0DFDEC51E3061C927D80838529F8F7DE8A57C223B6094397F7F3E11A
+      C8E6BE87059B766141CD6EE4CD9E821F0F561B8DF7CDB65224A66723963AAF13
+      2DCA91E1FA474546E33D6A5462D99C19886B7D8059671F6149FC2C7CB7A7DC68
+      3CF2ACAD2A0785B3A5288893E2EC862CA3EE9FB1FCD3583C35A5274D9B5F0BEF
+      4E9D02B239EF202D360A9F2B5269767F790FA8F8FBCF3EE50B5917AB5763D5BC
+      C9909F92A3EC8612ABB2676247FA7C3ABE0CE19198DB9D95801509D4F752768E
+      C89732AE1399C3D192655899FC1E14EDEBB0B6ABFA99EE6C4476C5222813A7E3
+      FB03557A799DDB4A503C578AD53529587B7B23FDBD596BE6637DC26F706FD7BA
+      5E16F9F6FAB478ACCA8945D94DE52F2C2DE537ACA46D119FD7E59158FF734132
+      D2164921FF42DEE75D59532EBD66273E4CA3D7B862D134E42813E9B930B1342A
+      FA2C1F2B6222FBF07263A290BDFEB728BB55C9FAEE9AABE5C8C88FC3CA29E1C8
+      AD5DA297F31CF3687E1F5E6163A6C1EF177C9281D478097D3564BCFCCB92E778
+      A456141F9319CC2322FE919EFE3E32F2E2E879EB1B4B6C6BD7230F07FEB465B3
+      A37E5E953513FDD5D2E8702C8F8DD43B86B24DEAEDD4D7759EE0E99C27DEB45F
+      6F33E3987026F9DB4A64B35C95FBB3FD5B2F9687DEBF59335E7D6B73B8BA5D39
+      F6FEE1FCD16714F34629C5817C8919C79463A8DD0067ABE041E6A6169ADFE61C
+      53B305910E292DB2C0CE2B4A21AE5686E25A5518AE578FC58D4DE340314131D1
+      B9251CB7B74EC09DDA089C5B17D699F4B6538AB999A9D90B58C2F36501A84D76
+      6FE65A985A7A3B727D1A337DDADACB8371B922041D1B426028B3EB23115AE421
+      17025C78BE6CBC10776BF1B935FE20CC86DF094EB72A02BEBFB86E342EAD1F83
+      81326F6E8E781C1D32349A8D7756E1070DB3EDC3405CF87D105E9679BB56A48A
+      16F665125E6BA91FF431CFAE0DEA5EB7C0AD6E6E847D92D8DF4E2A0EB093C68B
+      1C922A178DAAFBAA22AC9B8D79839AA7EEDA06BB59894F97F88289797E6DA02A
+      63AA63A9AD95990DDB7ED8599BD9E4CD7429BD5E3D4EC5B29F6D165A3E44785F
+      CA7DC0C46C5821384D7CC8101F8FF0B1155DAA087BC8C44C9AEC94A2CD3B55EC
+      0D36E6D6648F664399225F5B11D33C49AC68E2738CAB55E4C9222FE863264639
+      641A1ACB79312E0AA6FD9404F2C5E43989F3F8087E66E2A4B74A16470DA59524
+      B62F49961039101539F12D461ACA23FBC9E443240F192B0F527E5BAF1B2B870B
+      46B71A8B173FD12149373E49BE2D8F1FD1DCB0CCB96BE77297AE5DA9AE5DDB97
+      BA740CB733777A599E247088942127A83FCB71537FBEDA1D7FC9F5404BBE078E
+      158C428497B5F4A579543E60C843EA7D69CEF72926B4993384B6492FCB9B47E5
+      21DDDC476AD9A684E1AD47B25DA1CD2C7CDFA1EE6579E50BDDEB75F32DA99FA9
+      9387289BB35CA0CD3C94E9D63D98CBB119288BE4BEB365A3BB75737C519CAB32
+      D49D2B69CA74862E7389845F3A501E956F154C7525D2CF564CCE0B7529233A75
+      994773DC544237AEA8BFACF19E3C11C9F1BAB58C9C13088B8C991ECC4B3E9431
+      12BACC03AB5C1F0ADD0D678EA358C78BFC1E32D54F7236D13A1399D5240C6B63
+      621EA1E649ADAD82DACFC16C9CC1561C9B955386294E97FAA998EA27399B9853
+      8CE7FEB37330F7DDB7C2F1311353E34385331CEA49AC90F8248A09B54B92C78E
+      A86B29F0EA66AB9FD4D9E4B18F2397F12C33C1931B7D20CD49C5C6D4CE09C70B
+      053821F384BEBA7246E1AF9204D846EBDB03C26CD4334F4399278B7D1F8BFD07
+      471BB2EF1EF6E6BE350B99F7D3106643AA479BD7084BDF7E9EABCDA687F05298
+      62858DD998EED119376E488AAE6FF48B6B6AC20975B7142FA7F250F5C2E1ADFB
+      9FE55B92E3D59F66B8DDAF5D3CB2356D8ABD72BCC05AA2892F7DEDFF3FB350F3
+    }
   end
 end

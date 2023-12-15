@@ -1,0 +1,80 @@
+object Form4: TForm4
+  Left = 174
+  Height = 586
+  Top = 145
+  Width = 1151
+  Caption = 'Form4'
+  ClientHeight = 560
+  ClientWidth = 1151
+  Menu = MainMenu1
+  LCLVersion = '2.2.6.0'
+  object Image1: TImage
+    Left = 16
+    Height = 512
+    Top = 16
+    Width = 512
+    Enabled = False
+  end
+  object Image2: TImage
+    Left = 600
+    Height = 512
+    Top = 16
+    Width = 512
+    Enabled = False
+  end
+  object MainMenu1: TMainMenu
+    Left = 552
+    Top = 320
+    object MenuItem1: TMenuItem
+      Caption = 'Abrir imagen'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Abrir Mascara'
+      OnClick = MenuItem2Click
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'operaciones'
+      Enabled = False
+      OnClick = MenuItem3Click
+      object MenuItem4: TMenuItem
+        Caption = 'suma'
+        OnClick = MenuItem4Click
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'resta'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'multiplicacion'
+        OnClick = MenuItem6Click
+      end
+      object MenuItem7: TMenuItem
+        Caption = 'AND'
+        OnClick = MenuItem7Click
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'OR'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'XOR'
+        OnClick = MenuItem9Click
+      end
+      object MenuItem11: TMenuItem
+        Caption = 'NOT'
+        OnClick = MenuItem11Click
+      end
+      object MenuItem10: TMenuItem
+        Caption = 'Patron Circular'
+        OnClick = MenuItem10Click
+      end
+    end
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Filter = 'BMPs (*.bmp)|*.bmp'
+    InitialDir = 'C:\Users\irvyn\OneDrive\Documents\ProcesamientoDeImagenes\'
+    Left = 552
+    Top = 272
+  end
+end
